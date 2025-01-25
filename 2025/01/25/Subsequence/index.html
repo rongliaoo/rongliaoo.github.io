@@ -1,0 +1,250 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Leetcode 300. Longest Increasing Subsequence | rong's blog</title><meta name="author" content="rongliao"><meta name="copyright" content="rongliao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="300. Longest Increasing Subsequence題意Given an integer array nums, return the length of the longest strictly increasing subsequence.給定一個整數陣列nums，回傳嚴格遞增的最長序列。 123456789101112131415Example 1:Input: nums">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Leetcode 300. Longest Increasing Subsequence">
+<meta property="og:url" content="https://rongliaoo.github.io/2025/01/25/Subsequence/index.html">
+<meta property="og:site_name" content="rong&#39;s blog">
+<meta property="og:description" content="300. Longest Increasing Subsequence題意Given an integer array nums, return the length of the longest strictly increasing subsequence.給定一個整數陣列nums，回傳嚴格遞增的最長序列。 123456789101112131415Example 1:Input: nums">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://rongliaoo.github.io/img/meow_1.jpg">
+<meta property="article:published_time" content="2025-01-25T03:41:10.000Z">
+<meta property="article:modified_time" content="2025-01-25T05:58:17.312Z">
+<meta property="article:author" content="rongliao">
+<meta property="article:tag" content="Leetcode-medium">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://rongliaoo.github.io/img/meow_1.jpg"><link rel="shortcut icon" href="/img/cat_icon.png"><link rel="canonical" href="https://rongliaoo.github.io/2025/01/25/Subsequence/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Leetcode 300. Longest Increasing Subsequence',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'leetcode'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/img/meow_2.jpg);"></div><div class="page" id="body-wrap"><header class="not-home-page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/cat_icon.png" alt="Logo"><span class="site-name">rong's blog</span></a></span><div id="menus"></div></nav><div id="page-site-info"><h1 id="site-title">Leetcode 300. Longest Increasing Subsequence</h1></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="300-Longest-Increasing-Subsequence"><a href="#300-Longest-Increasing-Subsequence" class="headerlink" title="300. Longest Increasing Subsequence"></a><a target="_blank" rel="noopener" href="https://leetcode.com/problems/longest-increasing-subsequence/description/">300. Longest Increasing Subsequence</a></h1><h2 id="題意"><a href="#題意" class="headerlink" title="題意"></a>題意</h2><p>Given an integer array nums, return the length of the longest <strong>strictly increasing</strong> subsequence.<br>給定一個整數陣列<code>nums</code>，回傳<strong>嚴格遞增</strong>的最長序列。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line">Input: nums = [10,9,2,5,3,7,101,18]</span><br><span class="line">Output: 4</span><br><span class="line">Explanation: The longest increasing subsequence is [2,3,7,101], therefore the length is 4.</span><br><span class="line"></span><br><span class="line">Example 2:</span><br><span class="line">Input: nums = [0,1,0,3,2,3]</span><br><span class="line">Output: 4</span><br><span class="line">解釋: The longest increasing subsequence is [0, 1, 2, 3], therefore the length is 4.</span><br><span class="line"></span><br><span class="line">Example 3:</span><br><span class="line">Input: nums = [7,7,7,7,7,7,7]</span><br><span class="line">Output: 1</span><br><span class="line">解釋: The longest increasing subsequence is [7], therefore the length is 1.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="Constraints"><a href="#Constraints" class="headerlink" title="Constraints:"></a>Constraints:</h3><ul>
+<li>1 &lt;&#x3D; nums.length &lt;&#x3D; 2500</li>
+<li>-104 &lt;&#x3D; nums[i] &lt;&#x3D; 104</li>
+</ul>
+<h2 id="Solution-1-Dynamic-programming"><a href="#Solution-1-Dynamic-programming" class="headerlink" title="Solution 1 - Dynamic programming"></a>Solution 1 - Dynamic programming</h2><h3 id="思路："><a href="#思路：" class="headerlink" title="思路："></a>思路：</h3><ol>
+<li>建立一個 dp 陣列，其中 <code>dp[i]</code> 表示<u>以 <code>nums[i]</code> 結尾</u>的最長嚴格遞增子序列的長度。</li>
+<li>遍歷陣列，對於每一個 <code>nums[i]</code>，找出所有比 <code>nums[i]</code>（代表當前的數值） 小的 <code>nums[j]</code>（代表先前的數值），並更新 <code>dp[i]</code> 為 <code>dp[j] + 1</code> 的最大值。</li>
+<li>最後的答案為 dp 陣列中的最大值。</li>
+</ol>
+<h3 id="Code"><a href="#Code" class="headerlink" title="Code"></a>Code</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">lengthOfLIS</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> s = nums.<span class="built_in">size</span>();</span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">dp</span><span class="params">(s, <span class="number">1</span>)</span></span>; <span class="comment">//先將全部數值初始化為1</span></span><br><span class="line">        <span class="type">int</span> result = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>; i&lt;s; i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>; j&lt;i; j++)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span>(nums[i] &gt; nums[j]) <span class="comment">//如果當前數值大於先前數值 -&gt; 可以形成遞增序列</span></span><br><span class="line">                &#123;</span><br><span class="line">                    dp[i] = <span class="built_in">max</span>(dp[i], dp[j] + <span class="number">1</span>); <span class="comment">//元素加一</span></span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            result = <span class="built_in">max</span>(result, dp[i]); <span class="comment">// 最終返回dp最大值，代表構成最長的序列長度</span></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Solution-2-Greedy-with-Binary-Search"><a href="#Solution-2-Greedy-with-Binary-Search" class="headerlink" title="Solution 2: Greedy with Binary Search"></a>Solution 2: Greedy with Binary Search</h2><p>source : <a target="_blank" rel="noopener" href="https://leetcode.com/problems/longest-increasing-subsequence/solutions/1326308/cpython-dp-binary-search-bit-segment-tre-wc3w/">[C++&#x2F;Python] DP, Binary Search, BIT, Segment Tree Solutions - Picture explain - O(NlogN)</a></p>
+<p>考慮<code>nums = [2, 6, 8, 3, 4, 5, 1]</code>，建立第一個子序列<code>sub1 = []</code></p>
+<ol>
+<li>放入第一個元素<code>sub1 = [2]</code></li>
+<li><code>6</code>，與前一元素比較<code>2 &lt; 6</code>，因此放入<code>sub1 = [2, 6]</code></li>
+<li><code>8</code>，與前一元素比較<code>6 &lt; 8</code>，因此放入<code>sub1 = [2, 6, 8]</code></li>
+<li><code>3</code>，與前一元素比較<code>8 &gt; 3</code>，不能放入<code>sub1</code>，但因為在訪問到後面的序列時有可能建構其他子序列，宣告另一個子序列並放入<code>sub2 = [2, 3]</code></li>
+<li><code>4</code>，與<code>sub1</code>最後元素<code>8 &gt; 4</code>，不能放入<code>sub1</code>，與<code>sub2</code>最後元素<code>3 &lt; 4</code>，因此放入<code>sub2 = [2, 3, 4]</code></li>
+<li><code>5</code>，與<code>sub1</code>最後元素<code>8 &gt; 5</code>，不能放入<code>sub1</code>，與<code>sub2</code>最後元素<code>4 &lt; 5</code>，因此放入<code>sub2 = [2, 3, 4, 5]</code></li>
+<li><code>1</code>，與<code>sub1</code>最後元素<code>8 &gt; 1</code>，不能放入<code>sub1</code>，與<code>sub2</code>最後元素<code>5 &gt; 1</code>，因此放入新子序列<code>sub3 = [1]</code></li>
+<li>最終<code>sub1 = [2, 6, 8]</code>、<code>sub2 = [2, 3, 4, 5]</code>、<code>sub3 = [1]</code>，其得到最長嚴格遞增子序列為<code>sub2</code>，長度為<code>4</code></li>
+</ol>
+<h3 id="Key-point"><a href="#Key-point" class="headerlink" title="Key point"></a>Key point</h3><p>在上面的步驟中，需要一直保留與建立不同的 <code>sub</code> 陣列 <code>（sub1， sub2...， subk）</code>，這會導致性能不佳。但是注意到，可以只保留一個 sub 陣列，當新數位 x 不大於 subsequence sub 的最後一個元素時，我們進行二分搜索，找到 sub 中的最小元素 &gt;&#x3D; x，並替換為數位 x。</p>
+<h3 id="範例運行：nums-2-6-8-3-4-5-1"><a href="#範例運行：nums-2-6-8-3-4-5-1" class="headerlink" title="範例運行：nums &#x3D; [2, 6, 8, 3, 4, 5, 1]"></a>範例運行：nums &#x3D; [2, 6, 8, 3, 4, 5, 1]</h3><ol>
+<li><p>將第一個數字加入子序列 <code>sub</code>，<code>sub = [2]</code></p>
+</li>
+<li><p><code>6</code>大於目前子序列的最後一個數字 <code>2</code>，因此將其新增到 <code>sub</code> 的末尾：<code>sub = [2, 6]</code></p>
+</li>
+<li><p><code>8</code>大於目前子序列的最後一個數字 <code>6</code>，因此將其新增到 <code>sub</code> 的末尾：<code>sub = [2, 6, 8]</code></p>
+</li>
+<li><p><code>3</code>小於目前子序列的最後一個數字 <code>8</code>，因此無法直接延長子序列。</p>
+<ul>
+<li>需要找到 <code>sub</code> 中第一個大於或等於 <code>3</code> 的數字（使用二分搜尋），該數字為<code>6</code>。</li>
+<li>用 <code>3</code>替換<code>6</code>，結果為：<code>sub = [2, 3, 8]</code></li>
+</ul>
+</li>
+<li><p><code>4</code>小於目前子序列的最後一個數字 <code>8</code>，因此無法直接延長子序列。</p>
+<ul>
+<li>需要找到 <code>sub</code> 中第一個大於或等於<code>4</code> 的數字（使用二分搜尋），該數字為 8。</li>
+<li>用 <code>4</code> 替換 <code>8</code>，結果為：<code>sub = [2, 3, 4]</code></li>
+</ul>
+</li>
+<li><p><code>5</code>大於目前子序列的最後一個數字 <code>4</code>，因此將其新增到 <code>sub</code> 的末尾<code>sub = [2, 3, 4, 5]</code></p>
+</li>
+<li><p><code>1</code>小於目前子序列的第一個數字 <code>2</code>，因此無法直接延長子序列。</p>
+<ul>
+<li>需要找到 <code>sub</code> 中第一個大於或等於 1 的數字（使用二分搜尋），該數字為 2。</li>
+<li>用 1 替換 2，結果為：<code>sub = [1, 3, 4, 5]</code></li>
+</ul>
+</li>
+<li><p>最終結果：<code>sub</code> 的長度即為最長遞增子序列的長度，在此範例中為：<code>len(sub) = 4</code></p>
+</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123; <span class="comment">// 8 ms, faster than 91.61%</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">lengthOfLIS</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt; sub;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> x : nums) &#123;</span><br><span class="line">            <span class="keyword">if</span> (sub.<span class="built_in">empty</span>() || sub[sub.<span class="built_in">size</span>() - <span class="number">1</span>] &lt; x) &#123;</span><br><span class="line">                sub.<span class="built_in">push_back</span>(x);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">auto</span> it = <span class="built_in">lower_bound</span>(sub.<span class="built_in">begin</span>(), sub.<span class="built_in">end</span>(), x); <span class="comment">// Find the index of the first element &gt;= x</span></span><br><span class="line">                *it = x; <span class="comment">// Replace that number with x</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sub.<span class="built_in">size</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h4 id="C-lower-bound用法"><a href="#C-lower-bound用法" class="headerlink" title="C++ lower bound用法"></a>C++ lower bound用法</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line">std::<span class="built_in">lower_bound</span>(start, end, value);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p><code>start</code>: 搜尋範圍的起始迭代器。</p>
+</li>
+<li><p><code>end</code>: 搜尋範圍的結束迭代器（不包含在範圍內）。</p>
+</li>
+<li><p><code>value</code>: 要搜尋的值。<br>返回值是一個指向搜尋結果的 迭代器：</p>
+</li>
+<li><p>若找到一個 大於或等於 <code>value</code> 的元素，返回指向該元素的迭代器。</p>
+</li>
+<li><p>若所有元素都小於 <code>value</code>，則返回 <code>end</code>。</p>
+</li>
+</ul>
+<h3 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h3><ul>
+<li>DP還是不熟..</li>
+<li>學到了新的C++函式用法</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://rongliaoo.github.io">rongliao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://rongliaoo.github.io/2025/01/25/Subsequence/">https://rongliaoo.github.io/2025/01/25/Subsequence/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Leetcode-medium/">Leetcode-medium</a></div><div class="post-share"><div class="social-share" data-image="/img/meow_1.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav id="pagination"><div class="pagination"></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/meow_1.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">rongliao</div><div class="author-info-description">keep going</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">5</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">3</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">3</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">持續努力更新中...</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/25/Subsequence/" title="Leetcode 300. Longest Increasing Subsequence">Leetcode 300. Longest Increasing Subsequence</a><time datetime="2025-01-25T03:41:10.000Z" title="Created 2025-01-25 11:41:10">2025-01-25</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/19/2025-TSCCTF-Writeup/" title="2025-TSCCTF-Writeup"><img src="/img/meow_2.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2025-TSCCTF-Writeup"/></a><div class="content"><a class="title" href="/2025/01/19/2025-TSCCTF-Writeup/" title="2025-TSCCTF-Writeup">2025-TSCCTF-Writeup</a><time datetime="2025-01-19T07:21:54.000Z" title="Created 2025-01-19 15:21:54">2025-01-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/01/11/hexo%E7%B6%B2%E7%AB%99%E6%9E%B6%E8%A8%AD%E7%B4%80%E9%8C%84/" title="hexo網站架設與主題butterfly研究筆記"><img src="/img/meow_1.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="hexo網站架設與主題butterfly研究筆記"/></a><div class="content"><a class="title" href="/2025/01/11/hexo%E7%B6%B2%E7%AB%99%E6%9E%B6%E8%A8%AD%E7%B4%80%E9%8C%84/" title="hexo網站架設與主題butterfly研究筆記">hexo網站架設與主題butterfly研究筆記</a><time datetime="2025-01-11T13:00:23.000Z" title="Created 2025-01-11 21:00:23">2025-01-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/11/hello-world/" title="Hello World">Hello World</a><time datetime="2025-01-11T10:39:52.329Z" title="Created 2025-01-11 18:39:52">2025-01-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/01/11/My-New-Post/" title="My New Post">My New Post</a><time datetime="2025-01-11T08:16:59.000Z" title="Created 2025-01-11 16:16:59">2025-01-11</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>Categories</span>
+            
+          </div>
+          <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/CTF/"><span class="card-category-list-name">CTF</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Leetcode/"><span class="card-category-list-name">Leetcode</span><span class="card-category-list-count">1</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/Web/"><span class="card-category-list-name">Web</span><span class="card-category-list-count">1</span></a></li>
+          </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/Leetcode-medium/" style="font-size: 1.1em; color: #999">Leetcode-medium</a> <a href="/tags/CTF/" style="font-size: 1.1em; color: #999">CTF</a> <a href="/tags/hexo/" style="font-size: 1.1em; color: #999">hexo</a></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>Archives</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/01/">
+            <span class="card-archive-list-date">
+              January 2025
+            </span>
+            <span class="card-archive-list-count">5</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Website Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article Count :</div><div class="item-count">5</div></div><div class="webinfo-item"><div class="item-name">Unique Visitors :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Page Views :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Update :</div><div class="item-count" id="last-push-date" data-lastPushDate="2025-01-25T06:05:49.334Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By rongliao</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
