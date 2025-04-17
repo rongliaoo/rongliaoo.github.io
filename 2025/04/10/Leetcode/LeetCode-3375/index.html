@@ -1,0 +1,267 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>LeetCode-136 | rong's blog</title><meta name="author" content="rongliao"><meta name="copyright" content="rongliao"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="🍀Minimum Operations to Make Array Values Equal to K 題意You are given an integer array nums and an integer k. An integer h is called valid if all values in the array that are strictly greater than h">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode-136">
+<meta property="og:url" content="https://rongliaoo.github.io/2025/04/10/Leetcode/LeetCode-3375/index.html">
+<meta property="og:site_name" content="rong&#39;s blog">
+<meta property="og:description" content="🍀Minimum Operations to Make Array Values Equal to K 題意You are given an integer array nums and an integer k. An integer h is called valid if all values in the array that are strictly greater than h">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://rongliaoo.github.io/img/susa.webp">
+<meta property="article:published_time" content="2025-04-10T03:00:00.000Z">
+<meta property="article:modified_time" content="2025-04-10T03:03:46.259Z">
+<meta property="article:author" content="rongliao">
+<meta property="article:tag" content="Leetcode-easy">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://rongliaoo.github.io/img/susa.webp"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "LeetCode-136",
+  "url": "https://rongliaoo.github.io/2025/04/10/Leetcode/LeetCode-3375/",
+  "image": "https://rongliaoo.github.io/img/susa.webp",
+  "datePublished": "2025-04-10T03:00:00.000Z",
+  "dateModified": "2025-04-10T03:03:46.259Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "rongliao",
+      "url": "https://rongliaoo.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/cat_icon.png"><link rel="canonical" href="https://rongliaoo.github.io/2025/04/10/Leetcode/LeetCode-3375/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'LeetCode-136',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/img/meow_2.jpg);"></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(img/meow_1.jpg);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/cat_icon.png" alt="Logo"><span class="site-name">rong's blog</span></a><a class="nav-page-title" href="/"><span class="site-name">LeetCode-136</span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">LeetCode-136</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">Created</span><time datetime="2025-04-10T03:00:00.000Z" title="Created 2025-04-10 11:00:00">2025-04-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Leetcode/">Leetcode</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><p> </p>
+<h1 id="🍀Minimum-Operations-to-Make-Array-Values-Equal-to-K"><a href="#🍀Minimum-Operations-to-Make-Array-Values-Equal-to-K" class="headerlink" title="🍀Minimum Operations to Make Array Values Equal to K "></a>🍀<a target="_blank" rel="noopener" href="https://leetcode.com/problems/minimum-operations-to-make-array-values-equal-to-k/description/?envType=daily-question&envId=2025-04-09">Minimum Operations to Make Array Values Equal to K </a></h1><h2 id="題意"><a href="#題意" class="headerlink" title="題意"></a>題意</h2><p>You are given an integer array <code>nums</code> and an integer <code>k</code>.</p>
+<p>An integer <code>h</code> is called <strong>valid</strong> if all values in the array that are <strong>strictly greater</strong> than <code>h</code> are <em>identical</em>.</p>
+<p>For example, if <code>nums = [10, 8, 10, 8]</code>, a <strong>valid</strong> integer is <code>h = 9</code> because all <code>nums[i] &gt; 9</code> are equal to 10, but 5 is not a <strong>valid</strong> integer.</p>
+<p>You are allowed to perform the following operation on <code>nums</code>:</p>
+<ul>
+<li>Select an integer <code>h</code> that is <em>valid</em> for the <strong>current</strong> values in <code>nums</code>.</li>
+<li>For each index <code>i</code> where <code>nums[i] &gt; h</code>, set <code>nums[i]</code> to <code>h</code>.</li>
+</ul>
+<p>Return the <strong>minimum</strong> number of operations required to make every element in <code>nums</code> <strong>equal</strong> to <code>k</code>. If it is impossible to make all elements equal to <code>k</code>, return -1.</p>
+<p>你被給定一個整數陣列 nums 和一個整數 k。<br>你可以進行以下操作：</p>
+<ol>
+<li><p>選擇一個整數 h（稱為 valid），其條件是：所有比 h 大的數都要相同。</p>
+</li>
+<li><p>然後將所有 nums[i] &gt; h 的元素設為 h。</p>
+</li>
+</ol>
+<p>目標是透過最少次數的操作，使得所有陣列元素都等於 k。<br>如果無法做到，則回傳 -1。</p>
+<hr>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Example 1:</span><br><span class="line">Input: nums = [5,2,5,4,5], k = 2</span><br><span class="line">Output: 2</span><br><span class="line">Explanation:</span><br><span class="line">The operations can be performed in order using valid integers 4 and then 2.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Example 2:</span><br><span class="line">Input: nums = [2,1,2], k = 2</span><br><span class="line">Output: -1</span><br><span class="line">Explanation:</span><br><span class="line">It is impossible to make all the values equal to 2.</span><br><span class="line"></span><br><span class="line">Example 3:</span><br><span class="line">Input: nums = [9,7,5,3], k = 1</span><br><span class="line">Output: 4</span><br><span class="line">Explanation:</span><br><span class="line">The operations can be performed using valid integers in the order 7, 5, 3, and 1.</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="Constraints"><a href="#Constraints" class="headerlink" title="Constraints"></a>Constraints</h3><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">1 &lt;= nums.length &lt;= 100</span><br><span class="line"></span><br><span class="line">1 &lt;= nums[i] &lt;= 100</span><br><span class="line"></span><br><span class="line">1 &lt;= k &lt;= 100</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Approach-3-→-Using-Set"><a href="#Approach-3-→-Using-Set" class="headerlink" title="Approach 3 → Using Set"></a>Approach 3 → Using Set</h3><h4 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h4><ul>
+<li><p>如果陣列中出現比 <code>k</code> 小的數，則無法透過「只降低值」的操作達成 → 回傳 <code>-1</code>。</p>
+</li>
+<li><p>使用 <code>unordered_set</code> 快速去重，統計有多少個不同的元素。</p>
+</li>
+<li><p>如果最小值就是 <code>k</code>，則最後一次操作不需要進行（因為 k 已經在裡面），所以答案為 <code>set.size() - 1</code>。</p>
+</li>
+<li><p>否則，所有不同元素都必須做一次操作 → 回傳 <code>set.size()</code>。</p>
+</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minOperations</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> mini = *<span class="built_in">min_element</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (mini &lt; k) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="function">unordered_set&lt;<span class="type">int</span>&gt; <span class="title">st</span><span class="params">(nums.begin(), nums.end())</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> st.<span class="built_in">size</span>() - (mini == k);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="時間與空間複雜度"><a href="#時間與空間複雜度" class="headerlink" title="時間與空間複雜度"></a>時間與空間複雜度</h4><ul>
+<li><p><strong>Time Complexity</strong>: O(n)</p>
+</li>
+<li><p><strong>Space Complexity</strong>: O(n)</p>
+</li>
+</ul>
+<hr>
+<h3 id="Approach-4-→-Using-Bitset"><a href="#Approach-4-→-Using-Bitset" class="headerlink" title="Approach 4 → Using Bitset"></a>Approach 4 → Using Bitset</h3><h4 id="思路-1"><a href="#思路-1" class="headerlink" title="思路"></a>思路</h4><ul>
+<li><p>核心：只處理 <strong>大於 k 的不同數字</strong>，因為這些才需要壓到 k。</p>
+</li>
+<li><p>每個比 <code>k</code> 大的獨特數字，都要進行一次操作，直到最終達到 k。</p>
+</li>
+<li><p>使用 <code>bitset</code> 節省空間與加快速度，因為題目中的數字最大為 (10^6)。</p>
+<h4 id="範例說明"><a href="#範例說明" class="headerlink" title="範例說明"></a>範例說明</h4></li>
+</ul>
+<p>  </p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">nums = [9, 10, 5, 10, 8], k = 5</span><br><span class="line"></span><br><span class="line">最小值 min = 5，符合條件</span><br><span class="line"></span><br><span class="line">大於 5 的數值：8, 9, 10 → bitset 設定</span><br><span class="line"></span><br><span class="line">總共有 3 個不同的值需要處理 → 回傳 3</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minOperations</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> mini = *<span class="built_in">min_element</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (mini &lt; k) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">        bitset&lt;100001&gt; st;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i : nums)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (i &gt; k) st.<span class="built_in">set</span>(i);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> st.<span class="built_in">count</span>();</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="時間與空間複雜度-1"><a href="#時間與空間複雜度-1" class="headerlink" title="時間與空間複雜度"></a>時間與空間複雜度</h4><ul>
+<li><p><strong>Time Complexity</strong>: O(n)</p>
+</li>
+<li><p><strong>Space Complexity</strong>: O(1)（固定大小 bitset）</p>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://rongliaoo.github.io">rongliao</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://rongliaoo.github.io/2025/04/10/Leetcode/LeetCode-3375/">https://rongliaoo.github.io/2025/04/10/Leetcode/LeetCode-3375/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Leetcode-easy/">Leetcode-easy</a></div><div class="post-share"><div class="social-share" data-image="/img/susa.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/03/05/Leetcode/LeetCode-136/" title="LeetCode-136"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-05</div><div class="info-item-2">LeetCode-136</div></div><div class="info-2"><div class="info-item-1">🍀136. Single Number題意Given a non-empty array of integers nums, every element appears twice except for one. Find that single one. 給定一個非空正數陣列，每一個元素出現兩次不然為一次，找到出現次數為一次的元素。 You must implement a solution with a linear runtime complexity and use only constant extra space. 實現方法需要在線性時間內，並且只能用常數額外空間。 1234567891011Example 1:Input: nums = [2,2,1]Output: 1Example 2:Input: nums = [4,1,2,1,2]Output: 4Example 3:Input: nums = [1]Output: 1  Constraints: 1 &lt;&#x3D; nums.length &lt;&#x3D; 3 * 104 -3 * 104...</div></div></div></a><a class="pagination-related" href="/2025/02/24/Leetcode/LeetCode-1025/" title="LeetCode-1025"><img class="cover" src="/img/meow_2.jpg" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-02-24</div><div class="info-item-2">LeetCode-1025</div></div><div class="info-2"><div class="info-item-1">🍀1025. Divisor Game題意Alice 和Bob輪流玩遊戲，Alice 先開始。最初，黑板上有一個數字 n。在每個玩家的回合中，該玩家進行一次移動，包括：  選擇具有 0 &lt; x &lt; n 且 n % x == 0 的任何 x。 將黑板上的數位 n 替換為 n - x。  此外，如果玩家無法移動，他們就會輸掉遊戲。當且僅當 Alice 贏得遊戲時，假設兩個玩家都以最佳方式玩，則返回 true。 測資1234567Input: n = 2Output: trueExplanation: Alice chooses 1, and Bob has no more moves.Input: n = 3Output: falseExplanation: Alice chooses 1, Bob chooses 1, and Alice has no more moves.  Constraints:1 &lt;= n &lt;= 1000 Solution思路   ( n ) Alice 可選擇的 ( x ) 下一步 ( n - x ) Alice...</div></div></div></a><a class="pagination-related" href="/2025/03/12/Leetcode/LeetCode-283/" title="LeetCode 283. Move Zeroes"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-03-12</div><div class="info-item-2">LeetCode 283. Move Zeroes</div></div><div class="info-2"><div class="info-item-1">283. Move Zeroes題意Given an integer array nums, move all 0’s to the end of it while maintaining the relative order of the non-zero elements. 給定一個整數陣列nums，將所有的0移至陣列的最後面，並且將其他非零整數照原來的順序排列。 Note that you must do this in-place without making a copy of the array. 注意：你需要在in-place情況下完成，不能用其他或複製陣列。  Hint1: in-place意味著我們不應該為額外的陣列分配任何空間，但允許修改現有的陣列。然而，作為第一步，可以先想出一個使用額外空間的解決方案。對於這個問題也是如此，先採用使用額外陣列的方法，最終會自然而然地想到原地操作的解法。   Hint 2:雙指針的方法可能會在這裡很有幫助。這個想法是用一個指針來遍歷陣列，另一個指針則專注於處理陣列中非零的元素。  12345678Example...</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/susa.webp" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">rongliao</div><div class="author-info-description">keep going</div><div class="site-data"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">16</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">7</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">5</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">持續努力更新中...</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%8D%80Minimum-Operations-to-Make-Array-Values-Equal-to-K"><span class="toc-number">1.</span> <span class="toc-text">🍀Minimum Operations to Make Array Values Equal to K </span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%8C%E6%84%8F"><span class="toc-number">1.1.</span> <span class="toc-text">題意</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Example"><span class="toc-number">1.1.1.</span> <span class="toc-text">Example</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Constraints"><span class="toc-number">1.1.2.</span> <span class="toc-text">Constraints</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Solution"><span class="toc-number">1.2.</span> <span class="toc-text">Solution</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Approach-3-%E2%86%92-Using-Set"><span class="toc-number">1.2.1.</span> <span class="toc-text">Approach 3 → Using Set</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%99%82%E9%96%93%E8%88%87%E7%A9%BA%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">時間與空間複雜度</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Approach-4-%E2%86%92-Using-Bitset"><span class="toc-number">1.2.2.</span> <span class="toc-text">Approach 4 → Using Bitset</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%9D%E8%B7%AF-1"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AF%84%E4%BE%8B%E8%AA%AA%E6%98%8E"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">範例說明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%99%82%E9%96%93%E8%88%87%E7%A9%BA%E9%96%93%E8%A4%87%E9%9B%9C%E5%BA%A6-1"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">時間與空間複雜度</span></a></li></ol></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Posts</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/17/2025-04-17/" title="Untitled">Untitled</a><time datetime="2025-04-17T03:47:26.266Z" title="Created 2025-04-17 11:47:26">2025-04-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/17/Leetcode/LeetCode-11/" title="LeetCode-136">LeetCode-136</a><time datetime="2025-04-17T03:45:38.000Z" title="Created 2025-04-17 11:45:38">2025-04-17</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/10/Leetcode/LeetCode-3375/" title="LeetCode-136">LeetCode-136</a><time datetime="2025-04-10T03:00:00.000Z" title="Created 2025-04-10 11:00:00">2025-04-10</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/05/Leetcode/LeetCode-238/" title="LeetCode-238">LeetCode-238</a><time datetime="2025-04-05T13:14:50.000Z" title="Created 2025-04-05 21:14:50">2025-04-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/04/04/Leetcode/LeetCode-151/" title="LeetCode 151. Reverse Words in a String">LeetCode 151. Reverse Words in a String</a><time datetime="2025-04-04T13:43:36.000Z" title="Created 2025-04-04 21:43:36">2025-04-04</time></div></div></div></div></div></div></main><footer id="footer" style="background-image: url(img/meow_1.jpg);"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2025 By rongliao</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"><script>(() => {
+  const loadMathjax = () => {
+    if (!window.MathJax) {
+      window.MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']],
+          tags: 'none',
+        },
+        chtml: {
+          scale: 1.1
+        },
+        options: {
+          enableMenu: true,
+          renderActions: {
+            findScript: [10, doc => {
+              for (const node of document.querySelectorAll('script[type^="math/tex"]')) {
+                const display = !!node.type.match(/; *mode=display/)
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display)
+                const text = document.createTextNode('')
+                node.parentNode.replaceChild(text, node)
+                math.start = {node: text, delim: '', n: 0}
+                math.end = {node: text, delim: '', n: 0}
+                doc.math.push(math)
+              }
+            }, '']
+          }
+        }
+      }
+
+      const script = document.createElement('script')
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax/es5/tex-mml-chtml.min.js'
+      script.id = 'MathJax-script'
+      script.async = true
+      document.head.appendChild(script)
+    } else {
+      MathJax.startup.document.state(0)
+      MathJax.texReset()
+      MathJax.typesetPromise()
+    }
+  }
+
+  btf.addGlobalFn('encrypt', loadMathjax, 'mathjax')
+  window.pjax ? loadMathjax() : window.addEventListener('load', loadMathjax)
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
